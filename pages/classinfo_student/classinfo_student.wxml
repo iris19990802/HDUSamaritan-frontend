@@ -1,0 +1,44 @@
+<view class="container">
+
+  <view class="info_line">
+
+    <view class="line">
+      <view class="label">课程号</view>
+      <view class="message_view"> arr1 </view>
+    </view>
+
+    <view class="line">
+      <view class="label">课程名</view>
+      <view class="message_view"> arr2</view>
+    </view>
+    <view class="line">
+      <view class="label">教师号</view>
+      <view class="message_view"> arr3</view>
+    </view>
+    <view class="line">
+      <view class="label">教师名</view>
+      <view class="message_view"> arr3</view>
+    </view>
+
+
+  </view>
+
+  <view class="title_view">
+    <view>亲爱的xxx,</view>
+    <view>你在这门课的表现是</view>
+  </view>
+
+  <view class="result_view">
+    <view class="line">
+      <view class="label">应到次数</view>
+      <view class="message_view"> 3 </view>
+    </view>
+    <view class="line">
+      <view class="label">实到次数</view>
+      <view class="message_view"> 1 </view>
+    </view>
+  </view>
+
+  <button class="return_button">返回</button> 
+
+</view>

@@ -1,0 +1,50 @@
+<view class="container">
+
+  <view class="info_line">
+
+    <view class="line">
+      <view class="label">课程号</view>
+      <view class="message_view"> arr1 </view>
+    </view>
+
+    <view class="line">
+      <view class="label">课程名</view>
+      <view class="message_view"> arr2</view>
+    </view>
+
+  </view>
+
+  <view class="stastic_sumerize">
+    <view class="stastic_form_title"> 
+      <view class="summerize_title_item">应到</view>
+      <view class="summerize_title_item">实到</view>
+      <view class="summerize_title_item">缺勤</view>
+    </view>
+    <view class="stastic_form_content">
+      <view class="summerize_content_item">3</view>
+      <view class="summerize_content_item">2</view>
+      <view class="summerize_content_item">1</view>
+    </view>
+  </view>
+
+  <view class="student_list_info">
+   <view class="stastic_form_title"> 
+      <view class="summerize_title_item">学号</view>
+      <view class="summerize_title_item">姓名</view>
+      <view class="summerize_title_item">是否到课</view>
+    </view>
+
+    <view wx:for="{{student_answer_list}}">
+
+      <view class="student_info">
+        <!-- {{item.stu_id}}{{item.stu_name}}{{item.stu_absence}} -->
+        <view class="student_item">{{item.stu_id}}</view>
+        <view class="student_item">{{item.stu_name}}</view>
+        <view class="student_item">{{item.stu_is_here}}</view>
+      </view>
+
+    </view>
+
+  </view>
+  <button class="sign-button" type="primary">重新拍照</button>
+</view>

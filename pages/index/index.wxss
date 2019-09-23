@@ -1,0 +1,29 @@
+.empty-area {
+  height: 340px;
+}
+
+
+.input-area {
+  width: 70%;
+  font-size: 0.8em;
+  margin-top: 10px;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.label {
+  line-height: 180%;
+}
+
+.input {
+  width: 80%;
+}
+
+.login-button {
+  margin-top: 80px;
+  font-size: 0.8em;
+  line-height: 200%;
+  width: 70%;
+  height: 30px;
+}

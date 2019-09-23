@@ -1,0 +1,103 @@
+.container {
+  width: 100%;
+  height: 100%;
+  font-size: 0.8em;
+}
+
+.info_line{
+  width: 80%;
+  height: 90px;
+  /* background-color: burlywood; */
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-end; */
+  justify-content: space-around;
+
+}
+
+.line{
+  width:100%;
+  display: flex;
+  border-bottom: 1px solid gray;
+
+}
+
+.message_view{
+  flex: 1;
+  text-align: center;
+
+}
+
+.student_list_info {
+  width: 80%;
+  /* height: 350px; */
+  background-color: gray;
+  margin-top: 20px;
+  margin-bottom:80px;
+}
+
+.form_title{
+  width:100%;
+  height:30px;
+  background-color:mediumaquamarine;
+  text-align: center;
+  line-height: 2;
+  border-radius: 10px;
+}
+
+.student_info{
+  width:100%;
+  height:30px;
+  background-color:thistle;
+  margin-top:1px;
+  display: flex;
+  line-height: 2;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.student_item{
+  flex:1;
+  text-align: center;
+}
+
+
+.sign-button {
+  position: fixed;
+  bottom: 0;
+  width: 80%;
+  height: 40px;
+}
+
+.stastic_sumerize{
+  margin-top:20px;
+  width: 80%;
+}
+
+.stastic_form_title{
+  width:100%;
+  height:30px;
+  background-color:mediumaquamarine;
+  line-height: 2;
+  border-radius: 10px;
+  display: flex;
+
+}
+
+.summerize_title_item{
+  flex:1;
+  text-align: center
+}
+
+.stastic_form_content{
+  width: 100%;
+  height: 30px;
+  background-color:aqua;
+  line-height: 2;
+  border-radius: 10px;
+  display: flex;
+}
+.summerize_content_item{
+  flex:1;
+  text-align: center
+}

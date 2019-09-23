@@ -1,0 +1,48 @@
+<view class="container">
+
+
+  <view class="base_info">
+
+    <view class="photo">
+      <image class="photo_index" src="{{userPhotoSrc}}" bindtap="choose_file"></image>
+      <button type="primary" class="certify_button" bindtap="upload_photo">更新照片</button>
+    </view>
+
+    <view class="info_line">
+
+      <view class="line">
+        <view class="label">姓名</view>
+        <view class="message_view"> arr1 </view>
+      </view>
+
+      <view class="line">
+        <view class="label">账号</view>
+        <view class="message_view"> arr2</view>
+      </view>
+      <view class="line">
+        <view class="label">身份</view>
+        <view class="message_view"> arr3</view>
+      </view>
+
+
+    </view>
+  </view>
+
+
+  <view class="class_list_info">
+    <view class="form_title"> 课程信息 </view>
+
+    <view wx:for="{{class_info_list}}">
+
+      <view class="class_info">
+        <!-- {{item.class_id}}:{{item.class_name}} -->
+        <view class="class_text_id">{{item.class_id}}</view>
+        <view class="class_text_name">{{item.class_name}}</view>
+        <button class="class_button">查看</button>
+      </view>
+
+    </view>
+
+  </view>
+
+</view>

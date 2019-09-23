@@ -1,0 +1,64 @@
+.container {
+  width: 100%;
+  height: 100%;
+  font-size: 0.8em;
+}
+
+.info_line{
+  width: 80%;
+  height: 90px;
+  /* background-color: burlywood; */
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-end; */
+  justify-content: space-around;
+
+}
+
+.line{
+  width:100%;
+  display: flex;
+  border-bottom: 1px solid gray;
+
+}
+
+.message_view{
+  flex: 1;
+  text-align: center;
+
+}
+
+.take_photo{
+  width:80%;
+  height: 190px;
+  margin-top: 15px;
+  background-color: royalblue;
+}
+
+.result_picture{
+  width:80%;
+  height: 190px;
+  margin-top: 20px;
+  background-color: powderblue;
+}
+
+.upload_button{
+  width: 80%;
+  height: 35px;
+  font-size: 1em;
+}
+
+.photo_index{
+  height: 100%;
+  width: 100%;
+}
+
+.title_result{
+  height: 35px;
+  width: 80%;
+  font-size: 1em;
+  background-color: #51A938;
+  text-align: center;
+  line-height: 2.3;
+  color:white;
+}

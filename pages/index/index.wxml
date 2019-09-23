@@ -1,0 +1,13 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="empty-area"></view>
+  <view class="input-area">
+    <view class="label">账号</view>
+    <input class="input" bindinput="bindChangeUsername"></input>
+  </view>
+  <view class="input-area">
+    <view class="label">密码</view>
+    <input class="input" type="password" bindinput="bindChangePassword"></input>
+  </view>
+  <button class="login-button" bindtap="login">登陆</button>
+</view>

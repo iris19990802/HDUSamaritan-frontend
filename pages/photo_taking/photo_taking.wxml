@@ -1,0 +1,29 @@
+<view class="container">
+
+  <view class="info_line">
+
+    <view class="line">
+      <view class="label">课程号</view>
+      <view class="message_view"> arr1 </view>
+    </view>
+
+    <view class="line">
+      <view class="label">课程名</view>
+      <view class="message_view"> arr2</view>
+    </view>
+
+  </view>
+
+  <view class="take_photo">
+  <image class="photo_index" src="{{signPhotoSrc}}" bindtap="choose_file"></image>
+  </view>
+
+    <button bindtap="upload_file" class="upload_button" type="primary">上传图片</button>
+
+  <view class="result_picture">
+  <image class="photo_index" src="{{signPhotoSrc}}"></image>
+  </view>
+  <button class="upload_button" type="primary">查看详细结果</button>
+
+
+</view>

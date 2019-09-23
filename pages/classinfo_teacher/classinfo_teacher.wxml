@@ -1,0 +1,34 @@
+<view class="container">
+
+  <view class="info_line">
+
+    <view class="line">
+      <view class="label">课程号</view>
+      <view class="message_view"> arr1 </view>
+    </view>
+
+    <view class="line">
+      <view class="label">课程名</view>
+      <view class="message_view"> arr2</view>
+    </view>
+
+  </view>
+
+
+  <view class="student_list_info">
+    <view class="form_title"> 学生信息 </view>
+
+    <view wx:for="{{student_info_list}}">
+
+      <view class="student_info">
+      <!-- {{item.stu_id}}{{item.stu_name}}{{item.stu_absence}} -->
+        <view class="student_item">{{item.stu_id}}</view>
+        <view class="student_item">{{item.stu_name}}</view>
+        <view class="student_item">{{item.stu_absence}}</view>
+      </view>
+
+    </view>
+
+  </view>
+  <button class="sign-button" type="primary">点击考勤</button>
+</view>

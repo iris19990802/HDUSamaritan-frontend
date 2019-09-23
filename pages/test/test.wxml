@@ -1,0 +1,3 @@
+<!--pages/test/test.wxml-->
+<image class="image" bindtap="choose_file" src="{{tempFilePaths}}"> </image>
+<button bindtap="upload_file">点击上传 </button>
