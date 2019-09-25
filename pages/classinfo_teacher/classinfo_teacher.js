@@ -5,72 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //{{ item.stu_id }}{{ item.stu_name }}{{ item.stu_absence }}
-    student_info_list:[{
-      stu_id:'1',
-      stu_name:'xxx',
-      stu_absence:0
-    },{
-        stu_id: '2',
-        stu_name: 'yyy',
-        stu_absence: 3
-      }, {
-        stu_id: '1',
-        stu_name: 'xxx',
-        stu_absence: 0
-      }, {
-        stu_id: '2',
-        stu_name: 'yyy',
-        stu_absence: 3
-      },{
-        stu_id: '1',
-        stu_name: 'xxx',
-        stu_absence: 0
-      }, {
-        stu_id: '2',
-        stu_name: 'yyy',
-        stu_absence: 3
-      }, {
-        stu_id: '1',
-        stu_name: 'xxx',
-        stu_absence: 0
-      }, {
-        stu_id: '2',
-        stu_name: 'yyy',
-        stu_absence: 3
-      }, {
-        stu_id: '1',
-        stu_name: 'xxx',
-        stu_absence: 0
-      }, {
-        stu_id: '2',
-        stu_name: 'yyy',
-        stu_absence: 3
-      }, {
-        stu_id: '1',
-        stu_name: 'xxx',
-        stu_absence: 0
-      }, {
-        stu_id: '2',
-        stu_name: 'yyy',
-        stu_absence: 3
-      }, {
-        stu_id: '1',
-        stu_name: 'xxx',
-        stu_absence: 0
-      }, {
-        stu_id: '2',
-        stu_name: 'yyy',
-        stu_absence: 3
-      }, {
-        stu_id: '1',
-        stu_name: 'xxx',
-        stu_absence: 0
-      }, {
-        stu_id: '2',
-        stu_name: 'yyy',
-        stu_absence: 3
-      }]
 
   },
 
@@ -78,6 +12,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    var this_course_id = options.course_id
+    wx.request({
+      url: 'http://127.0.0.1:5000/api/users/course_info_teacher/?course_id='+this_course_id,
+      success:res=>{
+        console.log(res.data)
+        this.setData({
+          'data_info': res.data,
+          'course_info':res.data[0].course
+        })
+      }
+    })
+    console.log(this.data)
 
   },
 

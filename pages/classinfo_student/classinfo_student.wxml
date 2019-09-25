@@ -4,41 +4,41 @@
 
     <view class="line">
       <view class="label">课程号</view>
-      <view class="message_view"> arr1 </view>
+      <view class="message_view"> {{course_info.course.c_code}} </view>
     </view>
 
     <view class="line">
       <view class="label">课程名</view>
-      <view class="message_view"> arr2</view>
+      <view class="message_view"> {{course_info.course.c_name}}</view>
     </view>
     <view class="line">
       <view class="label">教师号</view>
-      <view class="message_view"> arr3</view>
+      <view class="message_view"> {{course_info.course.c_teacher.username}}</view>
     </view>
     <view class="line">
       <view class="label">教师名</view>
-      <view class="message_view"> arr3</view>
+      <view class="message_view"> {{course_info.course.c_teacher.u_nickname}}</view>
     </view>
 
 
   </view>
 
   <view class="title_view">
-    <view>亲爱的xxx,</view>
+    <view>亲爱的{{this_user}},</view>
     <view>你在这门课的表现是</view>
   </view>
 
   <view class="result_view">
     <view class="line">
       <view class="label">应到次数</view>
-      <view class="message_view"> 3 </view>
+      <view class="message_view"> {{course_info.course.cnt_sign}} </view>
     </view>
     <view class="line">
       <view class="label">实到次数</view>
-      <view class="message_view"> 1 </view>
+      <view class="message_view"> {{course_info.cnt_abcense}} </view>
     </view>
   </view>
 
-  <button class="return_button">返回</button> 
+  <button class="return_button" bindtap="go_back">返回</button> 
 
 </view>

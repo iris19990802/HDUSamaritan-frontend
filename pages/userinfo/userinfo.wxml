@@ -12,16 +12,16 @@
 
       <view class="line">
         <view class="label">姓名</view>
-        <view class="message_view"> arr1 </view>
+        <view class="message_view"> {{nickname}}</view>
       </view>
 
       <view class="line">
         <view class="label">账号</view>
-        <view class="message_view"> arr2</view>
+        <view class="message_view"> {{username}}</view>
       </view>
       <view class="line">
         <view class="label">身份</view>
-        <view class="message_view"> arr3</view>
+        <view class="message_view">{{role_name}}</view>
       </view>
 
 
@@ -35,10 +35,9 @@
     <view wx:for="{{class_info_list}}">
 
       <view class="class_info">
-        <!-- {{item.class_id}}:{{item.class_name}} -->
-        <view class="class_text_id">{{item.class_id}}</view>
-        <view class="class_text_name">{{item.class_name}}</view>
-        <button class="class_button">查看</button>
+        <view class="class_text_id">{{item.c_code}}</view>
+        <view class="class_text_name">{{item.c_name}}</view>
+        <button class="class_button" data-id="{{item.c_id}}" bindtap="jump_class_info">查看</button>
       </view>
 
     </view>

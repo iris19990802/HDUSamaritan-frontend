@@ -1,4 +1,6 @@
 //app.js
+import './vendor/weapp-cookie/dist/weapp-cookie'
+
 App({
   
   globalData: {

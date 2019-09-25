@@ -8,26 +8,47 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userPhotoSrc:"",
+  },
     // {{ class_info.class_id }}: {{ class_info.class_name }}
 
-    class_info_list:[{
-      class_id:1,
-      class_name:'xxx'
-    },{
-      class_id:2,
-      class_name:'yyy'
-    }]
-  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData);
-    wx.request({
-      url: app.globalData.DOMAIN + '/api/user/find_course_by_user/',
+    var this_rolename = options.role;
+    if (options.role === "2") {
+      this_rolename = "学生";
+    }
+    else if (options.role == "1") {
+      this_rolename = "教师";
+    }
+    else if (options.role == "0") {
+      this_rolename = "管理员"
+    }
+    this.setData({  // 必须setdata，才能与前端绑定，不能直接等号赋值
+      'username': options.username,
+      'nickname': options.nickname,
+      'role':options.role,
+      'role_name':this_rolename
     })
+    wx.request({
+      // url: app.globalData.DOMAIN + '/api/user/find_course_by_user/',
+      url: 'http://127.0.0.1:5000/api/users/find_course_by_user/',
+      success: res=>{
+        if(this.data.role === "2"){ // 学生
+          var lst = new Array();
+          for(var i=0;i<res.data.length;i++){
+            lst.push(res.data[i]['course'])
+          }
+          this.setData({'class_info_list': lst})
+        }
+        else if(this.data.role === "1"){ // 教师
+          this.setData({'class_info_list':res.data})
+        }
+      }
+    })
+
   },
 
   /**
@@ -108,6 +129,20 @@ Page({
         const data = res.data
       }
     })
+  },
+  jump_class_info:function(e){
+    var course_id = e.target.dataset.id;
+    if(this.data.role === "2"){
+      wx.navigateTo({
+        url: '/pages/classinfo_student/classinfo_student?course_id=' + course_id + '&nickname=' + this.data.nickname,
+      })
+    }
+    else if(this.data.role === "1"){
+      wx.navigateTo({
+        url: '/pages/classinfo_teacher/classinfo_teacher?course_id=' + course_id,
+      })
+    }
+    
   }
 
 })

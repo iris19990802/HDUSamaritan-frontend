@@ -4,27 +4,39 @@
 
     <view class="line">
       <view class="label">课程号</view>
-      <view class="message_view"> arr1 </view>
+      <view class="message_view"> {{course_info.c_code}} </view>
     </view>
 
     <view class="line">
       <view class="label">课程名</view>
-      <view class="message_view"> arr2</view>
+      <view class="message_view"> {{course_info.c_name}}</view>
+    </view>
+
+    <view class="line">
+      <view class="label">总考勤次数</view>
+      <view class="message_view"> {{course_info.cnt_sign}}</view>
     </view>
 
   </view>
 
 
   <view class="student_list_info">
-    <view class="form_title"> 学生信息 </view>
+    <!-- <view class="form_title"> 学生信息 </view> -->
+     
+    <view class="stastic_form_title"> 
+      <view class="summerize_title_item">学号</view>
+      <view class="summerize_title_item">姓名</view>
+      <view class="summerize_title_item">缺勤</view>
+    </view>
 
-    <view wx:for="{{student_info_list}}">
+    <view wx:for="{{data_info}}">
 
       <view class="student_info">
       <!-- {{item.stu_id}}{{item.stu_name}}{{item.stu_absence}} -->
-        <view class="student_item">{{item.stu_id}}</view>
-        <view class="student_item">{{item.stu_name}}</view>
-        <view class="student_item">{{item.stu_absence}}</view>
+        <view class="student_item">{{item.user.username}}</view>
+        <view class="student_item">{{item.user.u_nickname}}</view>
+        <view class="student_item">{{course_info.cnt_sign-item.cnt_abcense}}</view>
+       
       </view>
 
     </view>

@@ -12,7 +12,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var this_course_id = options.course_id
+    this.setData({ 
+      'this_user' : options.nickname
+    })
+    wx.request({
+      url: 'http://127.0.0.1:5000/api/users/course_info_student/?course_id=' + this_course_id,
+      success: res => {
+        this.setData({
+          'course_info': res.data
+        })
+      }
+    })
+    console.log(this.data)
   },
 
   /**
@@ -62,5 +74,8 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  go_back:function(){
+    wx.navigateBack({ changed: true })
   }
 })

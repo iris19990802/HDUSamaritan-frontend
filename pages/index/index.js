@@ -35,14 +35,14 @@ Page({
       success(res) {
         console.log(res)
         if (res.statusCode == 200){
-          if (res.data.role===1 || res.data.role===2){
+          if (res.data.u_role===1 || res.data.u_role===2){
             wx.redirectTo({
-              url: '/pages/userinfo/userinfo',
+              url: '/pages/userinfo/userinfo?username=' + res.data.username + '&nickname=' + res.data.u_nickname+'&role='+res.data.u_role,
             })
           }
           else{
             wx.redirectTo({
-              url: ';',
+              url: ';'
             })
           }
         }
