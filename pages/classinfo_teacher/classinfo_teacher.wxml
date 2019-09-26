@@ -32,7 +32,6 @@
     <view wx:for="{{data_info}}">
 
       <view class="student_info">
-      <!-- {{item.stu_id}}{{item.stu_name}}{{item.stu_absence}} -->
         <view class="student_item">{{item.user.username}}</view>
         <view class="student_item">{{item.user.u_nickname}}</view>
         <view class="student_item">{{course_info.cnt_sign-item.cnt_abcense}}</view>
@@ -42,5 +41,5 @@
     </view>
 
   </view>
-  <button class="sign-button" type="primary">点击考勤</button>
+  <button class="sign-button" type="primary" bindtap="jump_qiandao">点击考勤</button>
 </view>

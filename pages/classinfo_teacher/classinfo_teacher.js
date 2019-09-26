@@ -75,5 +75,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  jump_qiandao:function(){
+    wx.navigateTo({
+      url: '/pages/photo_taking/photo_taking?course_id=' + this.data.course_info.c_id+"&course_name="+this.data.course_info.c_name,
+    })
   }
 })

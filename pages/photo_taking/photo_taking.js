@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    signPhotoSrc: "",
 
   },
 
@@ -13,7 +12,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.setData({
+      'course_id': options.course_id,
+      'course_name': options.course_name
+    })
   },
 
   /**
@@ -65,8 +68,6 @@ Page({
 
   },
 
-
-
   choose_file: function () {
     wx.chooseImage({
       count: 1, // 默认9
@@ -86,16 +87,28 @@ Page({
   upload_file: function (res) {
     console.log("in upload")
     wx.uploadFile({
-      url: 'http://172.20.10.3:5000/uploader', //仅为示例，非真实的接口地址
-      //url: 'www.canopusx.com:5000/uploader',
+      //url: 'http://172.20.10.3:5000/uploader', //仅为示例，非真实的接口地址
+      url: 'http://127.0.0.1:5000/api/attendance/sign_quest/',
       filePath: this.data.signPhotoSrc,
       name: 'file',
       formData: {
-        'user': 'test'
+        'course_id': this.data.course_id
       },
-      success(res) {
-        const data = res.data
+      success:res=>{
+        console.log("res")
+        console.log(res.data)
+        this.setData({
+          sign_result_info:res.data
+        })
       }
+    })
+    console.log("this_data")
+    console.log(this.data)
+  },
+
+  jump_to_info:function(e){
+    wx.navigateTo({
+      url: '/pages/sign_result/sign_result?course_id=' + this.data.course_id + '&course_name=' + this.data.course_name+'&sign_result_info=' + this.data.sign_result_info,
     })
   }
 })

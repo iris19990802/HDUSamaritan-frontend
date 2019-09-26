@@ -9,5 +9,5 @@
     <view class="label">密码</view>
     <input class="input" type="password" bindinput="bindChangePassword"></input>
   </view>
-  <button class="login-button" bindtap="login">登陆</button>
+  <button class="login-button" bindtap="login" type="primary">登陆</button>
 </view>

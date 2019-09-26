@@ -31,7 +31,6 @@
 .student_list_info {
   width: 80%;
   /* height: 350px; */
-  background-color: gray;
   margin-top: 20px;
   margin-bottom:80px;
 }
@@ -39,21 +38,29 @@
 .form_title{
   width:100%;
   height:30px;
-  background-color:mediumaquamarine;
   text-align: center;
   line-height: 2;
   border-radius: 10px;
 }
-
-.student_info{
-  width:100%;
+.student_info_outer{
+  width:110%;
   height:30px;
-  background-color:thistle;
   margin-top:1px;
   display: flex;
   line-height: 2;
   justify-content: space-between;
   align-items: center;
+}
+.student_info{
+  width:99%;
+  height:30px;
+  margin-top:1px;
+  margin-right: 3px;
+  display: flex;
+  line-height: 2;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid gray;
 }
 
 .student_item{
@@ -66,9 +73,16 @@
   position: fixed;
   bottom: 0;
   width: 80%;
-  height: 40px;
-}
+  height: 35px;
 
+  display: flex;
+}
+.sign_button_half{
+  height: 100%;
+  width: 50%;
+  font-size:1em;
+  line-height:2.5;
+}
 .stastic_sumerize{
   margin-top:20px;
   width: 80%;
@@ -77,9 +91,9 @@
 .stastic_form_title{
   width:100%;
   height:30px;
-  background-color:mediumaquamarine;
-  line-height: 2;
-  border-radius: 10px;
+  line-height:2;
+  /* border-radius: 10px; */
+  border-bottom: 1px solid gray;
   display: flex;
 
 }
@@ -92,10 +106,11 @@
 .stastic_form_content{
   width: 100%;
   height: 30px;
-  background-color:aqua;
   line-height: 2;
-  border-radius: 10px;
+  /* border-radius: 10px; */
+  border-bottom: 1px solid gray;
   display: flex;
+
 }
 .summerize_content_item{
   flex:1;
