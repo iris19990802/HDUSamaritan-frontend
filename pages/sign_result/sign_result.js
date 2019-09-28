@@ -17,6 +17,7 @@ Page({
       course_id:options.course_id,
       course_name:options.course_name,
       student_list:options.sign_result_info.student_sign_list,
+      artificial_checked:[],
       dirc:['否','是']
     })
 
@@ -114,6 +115,21 @@ Page({
       }
     }
     console.log(this.data)
+    /* 向后端发送数据，把签到结果添加到数据库 */
+    wx.request({
+      url: 'http://127.0.0.1:5000/api/attendance/confirm_sign/',
+      method: 'POST',
+      data: {
+        course_id: this.data.course_id,
+        user_abcense: this.data.student_list
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log(res);
+      }
+    })
     wx.showModal({
       title: '提示',
       content: '签到成功',

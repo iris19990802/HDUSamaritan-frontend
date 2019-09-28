@@ -34,7 +34,7 @@
       <view class="student_info">
         <view class="student_item">{{item.user.username}}</view>
         <view class="student_item">{{item.user.u_nickname}}</view>
-        <view class="student_item">{{course_info.cnt_sign-item.cnt_abcense}}</view>
+        <view class="student_item">{{item.cnt_abcense}}</view>
        
       </view>
 

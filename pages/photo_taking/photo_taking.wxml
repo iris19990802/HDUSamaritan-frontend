@@ -21,7 +21,7 @@
     <button bindtap="upload_file" class="upload_button" type="primary">发送图片</button>
 
   <view class="result_picture">
-  <image class="photo_index" src="{{resultPhotoSrc}}"></image>
+  <image class="photo_index" src="{{result_photo_src}}"></image>
   </view>
   <button class="upload_button" bindtap="jump_to_info" type="primary">查看详细结果</button>
 

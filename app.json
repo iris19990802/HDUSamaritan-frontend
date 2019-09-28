@@ -6,7 +6,8 @@
     "pages/classinfo_teacher/classinfo_teacher",
     "pages/photo_taking/photo_taking",
     "pages/sign_result/sign_result",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/choose_three_image/choose_three_image"
   ],
   "window": {
     "backgroundTextStyle": "light",

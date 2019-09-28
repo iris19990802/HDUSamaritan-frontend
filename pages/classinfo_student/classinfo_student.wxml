@@ -35,6 +35,10 @@
     </view>
     <view class="line">
       <view class="label">实到次数</view>
+      <view class="message_view"> {{course_info.course.cnt_sign-course_info.cnt_abcense}} </view>
+    </view>
+    <view class="line">
+      <view class="label">缺课次数</view>
       <view class="message_view"> {{course_info.cnt_abcense}} </view>
     </view>
   </view>

@@ -1,11 +1,11 @@
-<view class="container">
+ <view class="container">
 
 
   <view class="base_info">
 
     <view class="photo">
-      <image class="photo_index" src="{{userPhotoSrc}}" bindtap="choose_file"></image>
-      <button type="primary" class="certify_button" bindtap="upload_photo">更新照片</button>
+      <image class="photo_index" src="{{filePath}}" ></image>
+      <button type="primary" class="certify_button" bindtap="jump">更新照片</button>
     </view>
 
     <view class="info_line">

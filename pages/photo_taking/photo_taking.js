@@ -19,54 +19,7 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
 
   choose_file: function () {
     wx.chooseImage({
@@ -76,7 +29,7 @@ Page({
 
       success: (res) => {
         this.setData({
-          signPhotoSrc: res.tempFilePaths[0]
+          signPhotoSrc: res.tempFilePaths[0],
         })
         console.log(res.tempFilePaths)
         wx.setStorage({ key: "user_photo", data: res.tempFilePaths[0] })
@@ -97,8 +50,12 @@ Page({
       success:res=>{
         console.log("res")
         console.log(res.data)
+        var rand = Math.random()  // 随机数
+        var tmp_data = JSON.parse(res.data)
+        console.log(tmp_data)
         this.setData({
-          sign_result_info:res.data
+          sign_result_info: res.data,
+          result_photo_src: 'http://127.0.0.1:5000/' + tmp_data['output_photo_src'] + '?random=' + rand
         })
       }
     })
@@ -107,7 +64,7 @@ Page({
   },
 
   jump_to_info:function(e){
-    wx.navigateTo({
+    wx.redirectTo({
       url: '/pages/sign_result/sign_result?course_id=' + this.data.course_id + '&course_name=' + this.data.course_name+'&sign_result_info=' + this.data.sign_result_info,
     })
   }
