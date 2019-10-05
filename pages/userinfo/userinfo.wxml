@@ -44,4 +44,20 @@
 
   </view>
 
+    <view class="sign-button">
+    <button class="sign_button_half" type="primary" hidden="{{hidden}}" bindtap="modalinput_student">加入课程</button>
+    <button class="sign_button_half" type="primary" hidden="{{!hidden}}" bindtap="modalinput_teacher">创建课程</button>
+  </view>
 </view>
+
+
+<!-- 教师输入框 -->
+<modal hidden="{{!(hidden&&(!hiddenmodalput_teacher))}}" title="创建课程" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm_teacher">  
+    <input type='text' placeholder="课程名" value="{{course_name}}" bindinput="bindChangeCourseName" auto-focus/>
+    <input type='number' placeholder="课程代码" value="{{course_code}}" bindinput="bindChangeCourseCodeTeacher" auto-focus/>  
+</modal>  
+
+<!-- 学生输入框 -->
+<modal hidden="{{!((!hidden)&&(!hiddenmodalput_student))}}" title="加入课程" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm_student">  
+    <input type='text' placeholder="课程代码" value="{{course_name}}" bindinput="bindChangeCourseCodeStudent" auto-focus/>
+</modal>  

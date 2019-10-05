@@ -17,20 +17,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onShow: function (options) {
+    console.log(app)
     var rand = Math.random()  // 随机数
     if (app.globalData.userInfo['image0']!=null){
       this.data.userPhotoSrc[0] = 'http://127.0.0.1:5000/' + app.globalData.userInfo['image0'] + '?random=' + rand
     }
-    else if (app.globalData.userInfo['image1'] != null){
+    if (app.globalData.userInfo['image1'] != null){
       this.data.userPhotoSrc[1] = 'http://127.0.0.1:5000/' + app.globalData.userInfo['image1'] + '?random=' + rand
     }
-    else if (app.globalData.userInfo['image2'] != null){
+    if (app.globalData.userInfo['image2'] != null){
       this.data.userPhotoSrc[2] = 'http://127.0.0.1:5000/' + app.globalData.userInfo['image2'] + '?random=' + rand
     }
-    
+    console.log("this.data.userPhotoSrc")
+    console.log(this.data.userPhotoSrc)
     this.setData({
       userPhotoSrc: [...this.data.userPhotoSrc],
     })
+    console.log(this.data)
   },
   choose_photo: function (e) {
     var this_button_id = parseInt(e.target.dataset['id'])
@@ -57,7 +60,7 @@ Page({
     if (this.data.flag[this_button_id] === 0){
       return ;
     }
-    console.log(this.data.userPhotoSrc)
+    
     wx.uploadFile({
       url: "http://127.0.0.1:5000" + '/api/users/upload_user_photo/', //仅为示例，非真实的接口地址
       filePath: this.data.userPhotoSrc[this_button_id],
@@ -79,6 +82,7 @@ Page({
 
       }
     })
+    console.log(this.data.userPhotoSrc)
   },
   back_button:function(e){
     wx.navigateBack({

@@ -1,33 +1,10 @@
-<form bindsubmit="formSubmit" bindreset="formReset">
-  <view class="section section_gap">
-    <view class="section__title">switch</view>
-    <switch name="switch"/>
-  </view>
-  <view class="section section_gap">
-    <view class="section__title">slider</view>
-    <slider name="slider" show-value ></slider>
-  </view>
-
-  <view class="section">
-    <view class="section__title">input</view>
-    <input name="input" placeholder="please input here" />
-  </view>
-  <view class="section section_gap">
-    <view class="section__title">radio</view>
-    <radio-group name="radio-group">
-      <label><radio value="radio1"/>radio1</label>
-      <label><radio value="radio2"/>radio2</label>
-    </radio-group>
-  </view>
-  <view class="section section_gap">
-    <view class="section__title">checkbox</view>
-    <checkbox-group name="checkbox">
-      <label><checkbox />checkbox1</label>
-      <label><checkbox value="checkbox2"/>checkbox2</label>
-    </checkbox-group>
-  </view>
-  <view class="btn-area">
-    <button  type="primary" formType="submit" class="btn-area">Submit</button>
-    <button formType="reset">Reset</button>
-  </view>
-</form>
+<!--show.wxml-->  
+<view>{{course_name}}</view>
+<view>{{course_code}}</view>
+<view class="container" class="zn-uploadimg">  
+    <button type="primary"bindtap="modalinput">modal有输入框</button>   
+</view>  
+<modal hidden="{{hiddenmodalput}}" title="请输入验证码" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
+    <input type='text' placeholder="课程名" value="{{course_name}}" bindinput="bindChangeCourseName" auto-focus/>
+    <input type='number' placeholder="课程代码" value="{{course_code}}" bindinput="bindChangeCourseCode" auto-focus/>  
+</modal>  
