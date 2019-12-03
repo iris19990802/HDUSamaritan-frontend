@@ -1,4 +1,5 @@
 // pages/classinfo_teacher/classinfo_teacher.js
+const app = getApp()
 Page({
 
   /**
@@ -20,16 +21,16 @@ Page({
   onShow: function (options) {
 
     wx.request({
-      url: 'http://127.0.0.1:5000/api/users/course_info_teacher/?course_id='+this.data.this_course_id,
+      url: app.globalData.DOMAIN + 'api/users/course_info_teacher/?course_id='+this.data.this_course_id,
       success:res=>{
-        console.log(res.data)
+        // console.log(res.data)
         this.setData({
-          'data_info': res.data,
-          'course_info':res.data[0].course
+          'data_info': res.data.student,
+          'course_info':res.data,
         })
       }
     })
-    console.log(this.data)
+    // console.log(this.data)
 
   },
 

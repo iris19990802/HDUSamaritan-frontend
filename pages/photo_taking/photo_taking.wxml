@@ -23,7 +23,7 @@
   <view class="result_picture">
   <image class="photo_index" src="{{result_photo_src}}"></image>
   </view>
-  <button class="upload_button" bindtap="jump_to_info" type="primary">查看详细结果</button>
+  <button class="upload_button" bindtap="jump_to_info" type="primary" disabled="{{!flag}}">查看详细结果</button>
 
 
 </view>

@@ -1,11 +1,12 @@
 // pages/photo_taking/photo_taking.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    flag:false
   },
 
   /**
@@ -14,6 +15,7 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.setData({
+      'flag':false,
       'course_id': options.course_id,
       'course_name': options.course_name
     })
@@ -41,7 +43,7 @@ Page({
     console.log("in upload")
     wx.uploadFile({
       //url: 'http://172.20.10.3:5000/uploader', //仅为示例，非真实的接口地址
-      url: 'http://127.0.0.1:5000/api/attendance/sign_quest/',
+      url: app.globalData.DOMAIN + 'api/attendance/sign_quest/',
       filePath: this.data.signPhotoSrc,
       name: 'file',
       formData: {
@@ -55,7 +57,8 @@ Page({
         console.log(tmp_data)
         this.setData({
           sign_result_info: res.data,
-          result_photo_src: 'http://127.0.0.1:5000/' + tmp_data['output_photo_src'] + '?random=' + rand
+          result_photo_src: app.globalData.DOMAIN +  + tmp_data['output_photo_src'] + '?random=' + rand,
+          flag:true
         })
       }
     })

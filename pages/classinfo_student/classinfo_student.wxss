@@ -36,7 +36,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
 
 }
 
@@ -53,9 +53,22 @@
 }
 
 .return_button{
-  margin-top: 50px;
-  width: 80%;
-  height: 35px;
+  margin-bottom: 5px;
+  width: 100%;
   font-size: 1em;
   line-height: 2.5;
+  height: 35px;
+}
+
+.button_view{
+  margin-top: 50px;
+  width: 80%;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end
+}
+
+.quit_course_text{
+  font-size: 0.9em;
 }

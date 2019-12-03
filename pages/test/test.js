@@ -3,8 +3,16 @@
 var app = getApp()
 Page({
   data: {
-    hiddenmodalput: true,
+    hiddenmodalput: false,
     //可以通过hidden是否掩藏弹出框的属性，来指定那个弹出框  
+
+    role_items:[{
+      role_name:'教师',
+      role_value:1
+    },{
+      role_name:'学生',
+      role_value:2
+    }]
   },
   //点击按钮弹窗指定的hiddenmodalput弹出框  
   modalinput: function() {

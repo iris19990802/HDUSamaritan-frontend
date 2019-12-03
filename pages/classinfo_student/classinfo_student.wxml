@@ -35,14 +35,17 @@
     </view>
     <view class="line">
       <view class="label">实到次数</view>
-      <view class="message_view"> {{course_info.course.cnt_sign-course_info.cnt_abcense}} </view>
+      <view class="message_view"> {{course_info.course.cnt_sign-course_info.cnt_abcense}}</view>
     </view>
     <view class="line">
       <view class="label">缺课次数</view>
-      <view class="message_view"> {{course_info.cnt_abcense}} </view>
+      <view class="message_view"> {{course_info.cnt_abcense}}</view>
     </view>
   </view>
 
+  <view class="button_view">
   <button class="return_button" bindtap="go_back">返回</button> 
+  <text class="quit_course_text" bindtap="quit_course">加错课程？点此退课</text>
+  </view>
 
 </view>

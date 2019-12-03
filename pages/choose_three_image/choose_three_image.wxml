@@ -3,13 +3,13 @@
 
   <view class="photo_view">
     <view class="photo">
-      <view class="title">正面照</view>
-      <image data-id="0" class="photo_index" src="{{userPhotoSrc[0]}}" bindtap="choose_photo"></image>
-      <button data-id="0" type="primary" class="certify_button" bindtap="upload_photo">上传照片</button>
+      <view class="title">{{kind[cnt]}}</view>
+      <image data-id="0" class="photo_index" src="{{userPhotoSrc[cnt]}}" ></image>
+      <button data-id="0" type="primary" class="certify_button" bindtap="choose_photo">选择照片</button>
     </view>
   </view>
 
-  <view class="photo_view">
+  <!-- <view class="photo_view">
     <view class="photo">
       <view class="title">左侧面照</view>
       <image data-id="1" class="photo_index" src="{{userPhotoSrc[1]}}" bindtap="choose_photo"></image>
@@ -23,7 +23,7 @@
       <button data-id="2" type="primary" class="certify_button" bindtap="upload_photo">上传照片</button>
     </view>
 
-  </view>
+  </view> -->
 
 </view>
-<button class="upload_button" bindtap="login"  bindtap="back_button">返回</button>
+<button class="upload_button" disabled="{{disabled}}" bindtap="login"  bindtap="func_button">{{next[cnt]}}</button>

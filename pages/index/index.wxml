@@ -7,7 +7,25 @@
   </view>
   <view class="input-area">
     <view class="label">密码</view>
-    <input class="input" type="password" bindinput="bindChangePassword"></input>
+    <input class="input" type="password" bindinput="bindChangePassword" value="{{password}}"></input>
   </view>
+  <view class="button_view">
   <button class="login-button" bindtap="login" type="primary">登陆</button>
+  <view class="sign_text" bindtap="create_user">没有账号？注册</view>
+  </view>
 </view>
+
+<!-- 用户注册输入框 -->
+<modal hidden="{{hiddenmodal}}" title="用户注册" confirm-text="注册" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm_add_user">
+
+  <input type='text' placeholder="用户名" value="{{add_username}}" bindinput="bindChangeUserName_regis" auto-focus/>
+
+  <input type='password' placeholder="密码" value="{{add_password}}" bindinput="bindChangePassword_regis" auto-focus/>
+
+  <input type='text' placeholder="昵称" value="{{add_nickname}}" bindinput="bindChangeNickname" auto-focus/>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <radio class="radio" wx:for-items="{{role_items}}" value="{{item.role_value}}">
+      <text>{{item.role_name}}</text>
+    </radio>
+  </radio-group>
+</modal>

@@ -1,10 +1,13 @@
-<!--show.wxml-->  
-<view>{{course_name}}</view>
-<view>{{course_code}}</view>
-<view class="container" class="zn-uploadimg">  
-    <button type="primary"bindtap="modalinput">modal有输入框</button>   
-</view>  
-<modal hidden="{{hiddenmodalput}}" title="请输入验证码" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
-    <input type='text' placeholder="课程名" value="{{course_name}}" bindinput="bindChangeCourseName" auto-focus/>
-    <input type='number' placeholder="课程代码" value="{{course_code}}" bindinput="bindChangeCourseCode" auto-focus/>  
-</modal>  
+<modal hidden="{{hiddenmodalinput}}" title="用户注册" confirm-text="注册" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm_add_user">
+
+  <input type='text' placeholder="用户名" value="{{add_username}}" bindinput="bindChangeUserName" auto-focus/>
+
+  <input type='number' placeholder="密码" value="{{add_password}}" bindinput="bindChangePassword" auto-focus/>
+
+  <input type='text' placeholder="昵称" value="{{add_nickname}}" bindinput="bindChangeNickname" auto-focus/>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <radio class="radio" wx:for-items="{{role_items}}">
+      <text>{{item.role_name}}</text>
+    </radio>
+  </radio-group>
+</modal>

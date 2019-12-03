@@ -1,7 +1,6 @@
 // pages/choose_three_image/choose_three_image.js
 
-const app = getApp()
-
+var app = getApp();
 
 Page({
 
@@ -9,45 +8,57 @@ Page({
    * 页面的初始数据
    */
   data: {
-    flag:[0,0,0],
-    userPhotoSrc:["","",""],
+    kind:['正面照','左侧面照','右侧面照'],
+    next:['下一步','下一步','提交'],
+    cnt:0,
+    disabled:false,
+    userPhotoSrc: ["", "", ""],
   },
 
+  onLoad:function(){
+    this.setData({
+      cnt:0
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onShow: function (options) {
-    console.log(app)
     var rand = Math.random()  // 随机数
-    if (app.globalData.userInfo['image0']!=null){
-      this.data.userPhotoSrc[0] = 'http://127.0.0.1:5000/' + app.globalData.userInfo['image0'] + '?random=' + rand
-    }
-    if (app.globalData.userInfo['image1'] != null){
-      this.data.userPhotoSrc[1] = 'http://127.0.0.1:5000/' + app.globalData.userInfo['image1'] + '?random=' + rand
-    }
-    if (app.globalData.userInfo['image2'] != null){
-      this.data.userPhotoSrc[2] = 'http://127.0.0.1:5000/' + app.globalData.userInfo['image2'] + '?random=' + rand
-    }
-    console.log("this.data.userPhotoSrc")
-    console.log(this.data.userPhotoSrc)
-    this.setData({
-      userPhotoSrc: [...this.data.userPhotoSrc],
+    wx.request({
+      url: app.globalData.DOMAIN + 'api/users/user_info/' + '?random=' + rand,
+      success: res => {
+        // -------------------  配置用户信息 -------------------
+        var user_info = res.data.user_info
+        if (user_info.u_image_0 != null) {
+          this.data.userPhotoSrc[0] = app.globalData.DOMAIN + user_info.u_image_0 + '?random=' + rand
+        }
+        if (user_info.u_image_1 != null) {
+          this.data.userPhotoSrc[1] = app.globalData.DOMAIN + user_info.u_image_1 + '?random=' + rand
+        }
+        if (user_info.u_image_2 != null) {
+          this.data.userPhotoSrc[2] = app.globalData.DOMAIN + user_info.u_image_2 + '?random=' + rand
+        }
+        console.log("this.data.userPhotoSrc")
+        console.log(this.data.userPhotoSrc)
+        this.setData({
+          userPhotoSrc: [...this.data.userPhotoSrc],
+        }, () => console.log(this.data));
+      }
     })
-    console.log(this.data)
   },
   choose_photo: function (e) {
-    var this_button_id = parseInt(e.target.dataset['id'])
+    var this_button_id = this.data.cnt;
+    
     wx.chooseImage({
       count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: (res) => {
         this.data.userPhotoSrc[this_button_id] = res.tempFilePaths[0]
-        this.data.flag[this_button_id] = 1
-          this.setData({
-            userPhotoSrc: [...this.data.userPhotoSrc],
-            flag:[...this.data.flag]
-          })
+        this.setData({
+          userPhotoSrc: [...this.data.userPhotoSrc],
+        })
       }
     })
 
@@ -56,37 +67,36 @@ Page({
   upload_photo: function (e) {
 
     var this_button_id = parseInt(e.target.dataset['id'])
-
-    if (this.data.flag[this_button_id] === 0){
-      return ;
-    }
-    
+    this.setData({
+      disabled: true
+    })
     wx.uploadFile({
-      url: "http://127.0.0.1:5000" + '/api/users/upload_user_photo/', //仅为示例，非真实的接口地址
-      filePath: this.data.userPhotoSrc[this_button_id],
+      url: app.globalData.DOMAIN + 'api/users/upload_user_photo/', //仅为示例，非真实的接口地址
+      filePath: this.data.userPhotoSrc[this.data.cnt],
       name: 'file',
       formData: {
-        'pos': e.target.dataset['id'],
-       },
-      success(res) {
-        const data = JSON.parse(res.data)
-        console.log(data)
-        app.globalData.userInfo = {
-          username: data.username,
-          nickname: data.u_nickname,
-          role: data.u_role,
-          image0: data.u_image_0,
-          image1: data.u_image_1,
-          image2: data.u_image_2
-        }
-
+        'pos': this.data.cnt,
+      },
+      success: (res) => {
+        const data = JSON.parse(res.data);
+        console.log(data);
       }
     })
     console.log(this.data.userPhotoSrc)
   },
-  back_button:function(e){
-    wx.navigateBack({
-      
-    })
+
+  func_button: function(e){
+    this.upload_photo(e);
+    if(this.data.cnt == 2){
+      wx.redirectTo({
+        url: '/pages/userinfo/userinfo',
+      })
+    }else{
+      this.setData({
+        cnt: this.data.cnt + 1,
+        disabled: false //disabled为false，说明可以按“下一步”按钮
+      })
+    }
+    
   }
 })
