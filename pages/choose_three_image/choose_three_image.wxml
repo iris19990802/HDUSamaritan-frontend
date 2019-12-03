@@ -26,4 +26,4 @@
   </view> -->
 
 </view>
-<button class="upload_button" disabled="{{disabled}}" bindtap="login"  bindtap="func_button">{{next[cnt]}}</button>
+<button class="upload_button" disabled="{{disabled}}" bindtap="login"  bindtap="next_step_button">{{next[cnt]}}</button>
