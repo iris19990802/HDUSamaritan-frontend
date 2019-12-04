@@ -57,7 +57,7 @@ Page({
         console.log(tmp_data)
         this.setData({
           sign_result_info: res.data,
-          result_photo_src: app.globalData.DOMAIN +  + tmp_data['output_photo_src'] + '?random=' + rand,
+          result_photo_src: app.globalData.DOMAIN + tmp_data['output_photo_src'] + '?random=' + rand,
           flag:true
         })
       }

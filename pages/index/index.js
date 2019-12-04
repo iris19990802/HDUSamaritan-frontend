@@ -141,19 +141,34 @@ Page({
         role: this.data.add_role
       },
       success: res => {
-        wx.showModal({
-          title: '',
-          content: '注册成功，请继续添加照片信息',
-          showCancel: false,//是否显示取消按钮
-          success(res) {
-            if (res.confirm) {//用户点击确定后，跳转，继续添加照片
-              wx.redirectTo({
-                url: '/pages/choose_three_image/choose_three_image',
-              })
+        if(this.data.add_role == 2){//如果是学生
+          wx.showModal({
+            title: '',
+            content: '注册成功，请继续添加照片信息',
+            showCancel: false,//是否显示取消按钮
+            success(res) {
+              if (res.confirm) {//用户点击确定后，跳转，继续添加照片
+                wx.redirectTo({
+                  url: '/pages/choose_three_image/choose_three_image',
+                })
+              }
             }
-
-          }
-        })
+          })
+        }
+        else if(this.data.add_role == 1){//如果是老师
+          wx.showModal({
+            title: '',
+            content: '注册成功，欢迎您',
+            showCancel: false,//是否显示取消按钮
+            success(res) {
+              if (res.confirm) {//用户点击确定后，跳转，继续添加照片
+                wx.redirectTo({
+                  url: '/pages/userinfo/userinfo',
+                })
+              }
+            }
+          })
+        }
       }
     })
   },
