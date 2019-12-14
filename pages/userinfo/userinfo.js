@@ -39,7 +39,7 @@ Page({
         } else if (user_info.u_role == 0) {
           this_rolename = "管理员"
         }
-        console.log(res)
+        //console.log(res)
         this.setData({ // 必须setdata，才能与前端绑定，不能直接等号赋值
           'username': user_info.username,
           'nickname': user_info.u_nickname,
@@ -176,7 +176,7 @@ Page({
           this.cancel()
           this.onLoad()
         }
-        console.log(res.data)
+        //console.log(res.data)
       }
     })
   },

@@ -42,7 +42,6 @@ Page({
   upload_file: function (res) {
     console.log("in upload")
     wx.uploadFile({
-      //url: 'http://172.20.10.3:5000/uploader', //仅为示例，非真实的接口地址
       url: app.globalData.DOMAIN + 'api/attendance/sign_quest/',
       filePath: this.data.signPhotoSrc,
       name: 'file',

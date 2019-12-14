@@ -21,7 +21,7 @@ Page({
     }]
   },
 
-  onLoad: function () {
+  onLoad: function() {
     wx.request({
       url: app.globalData.DOMAIN + 'api/users/user_info/', //仅为示例，并非真实的接口地址
       header: {
@@ -44,11 +44,11 @@ Page({
     })
   },
 
-  onShow: function (e) {
+  onShow: function(e) {
     this.cancel
   },
 
-  bindChangeUsername: function (e) {
+  bindChangeUsername: function(e) {
     const {
       detail: {
         value
@@ -59,7 +59,7 @@ Page({
     });
   },
 
-  bindChangePassword: function (e) {
+  bindChangePassword: function(e) {
     const {
       detail: {
         value
@@ -70,9 +70,9 @@ Page({
     })
   },
 
-  login: function (e) {
+  login: function(e) {
     wx.request({
-      url: app.globalData.DOMAIN + 'api/users/login/', //仅为示例，并非真实的接口地址
+      url: app.globalData.DOMAIN + 'api/users/login/',
       data: {
         req_username: this.data.username,
         req_password: this.data.password
@@ -83,7 +83,7 @@ Page({
       header: {
         'content-type': 'application/json' // 默认值
       },
-      success:(res)=> {
+      success: (res) => {
         if (res.statusCode == 200) {
           if (res.data.u_role === 1 || res.data.u_role === 2) {
             wx.redirectTo({
@@ -94,11 +94,11 @@ Page({
               url: ';'
             })
           }
-        }else{
+        } else {
           wx.showModal({
             title: '提示',
             content: '登陆失败，请检查用户名与密码',
-            showCancel:false
+            showCancel: false
           })
           this.setData({
             password: ""
@@ -109,7 +109,7 @@ Page({
   },
 
   //绑在按钮上，负责显示弹窗
-  create_user: function (e) {
+  create_user: function(e) {
     this.setData({
       hiddenmodal: false
     })
@@ -117,7 +117,7 @@ Page({
   // 弹窗内按钮
 
   // 取消按钮  
-  cancel: function () {
+  cancel: function() {
     this.setData({
       // 把输入框变量，全部清空
       add_username: "", //新用户名
@@ -130,7 +130,20 @@ Page({
   },
 
   // 确认按钮
-  confirm_add_user: function (e) {
+  confirm_add_user: function(e) {
+    this.setData({
+      add_username: this.data.add_username.trim(),
+      add_password: this.data.add_password.trim(),
+      add_nickname: this.data.add_nickname.trim()
+    });
+    if (this.data.add_username === "" || this.data.add_password === "" || this.data.add_nickname === "") {
+      wx.showModal({
+        title: '提示',
+        content: '用户名/密码/账号均不能为空，请重新输入！',
+        showCancel: false
+      })
+      return;
+    }
     wx.request({
       url: app.globalData.DOMAIN + 'api/users/add_user/',
       method: 'POST',
@@ -141,33 +154,40 @@ Page({
         role: this.data.add_role
       },
       success: res => {
-        if(this.data.add_role == 2){//如果是学生
+        if (res.statusCode != 200) {
           wx.showModal({
-            title: '',
-            content: '注册成功，请继续添加照片信息',
-            showCancel: false,//是否显示取消按钮
-            success(res) {
-              if (res.confirm) {//用户点击确定后，跳转，继续添加照片
-                wx.redirectTo({
-                  url: '/pages/choose_three_image/choose_three_image',
-                })
-              }
-            }
+            title: '提示',
+            content: '啊哦，页面跑丢了，请稍后再试',
+            showCancel: false
           })
-        }
-        else if(this.data.add_role == 1){//如果是老师
-          wx.showModal({
-            title: '',
-            content: '注册成功，欢迎您',
-            showCancel: false,//是否显示取消按钮
-            success(res) {
-              if (res.confirm) {//用户点击确定后，跳转，继续添加照片
-                wx.redirectTo({
-                  url: '/pages/userinfo/userinfo',
-                })
+        } else {
+          if (this.data.add_role == 2) { //如果是学生
+            wx.showModal({
+              title: '',
+              content: '注册成功，请继续添加照片信息',
+              showCancel: false, //是否显示取消按钮
+              success(res) {
+                if (res.confirm) { //用户点击确定后，跳转，继续添加照片
+                  wx.redirectTo({
+                    url: '/pages/choose_three_image/choose_three_image',
+                  })
+                }
               }
-            }
-          })
+            })
+          } else if (this.data.add_role == 1) { //如果是老师
+            wx.showModal({
+              title: '',
+              content: '注册成功，欢迎您',
+              showCancel: false, //是否显示取消按钮
+              success(res) {
+                if (res.confirm) { //用户点击确定后，跳转，继续添加照片
+                  wx.redirectTo({
+                    url: '/pages/userinfo/userinfo',
+                  })
+                }
+              }
+            })
+          }
         }
       }
     })
@@ -175,7 +195,7 @@ Page({
 
   //绑定弹窗内输入框
 
-  bindChangeUserName_regis: function (e) { // 用户名输入框
+  bindChangeUserName_regis: function(e) { // 用户名输入框
     const {
       detail: {
         value
@@ -186,7 +206,7 @@ Page({
     });
   },
 
-  bindChangePassword_regis: function (e) { //密码输入框
+  bindChangePassword_regis: function(e) { //密码输入框
     const {
       detail: {
         value
@@ -197,7 +217,7 @@ Page({
     });
   },
 
-  bindChangeNickname: function (e) { //昵称输入框
+  bindChangeNickname: function(e) { //昵称输入框
     const {
       detail: {
         value
@@ -209,7 +229,7 @@ Page({
   },
 
   // 绑定单选按钮组（radio-group）
-  radioChange: function (e) {
+  radioChange: function(e) {
     console.log(e)
     this.setData({
       add_role: parseInt(e.detail.value)
