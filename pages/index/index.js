@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    imageSrc: '../../pages/image/logo.png',
     // 把输入框变量，全部清空
     add_username: "", //新用户名
     add_nickname: "", //新用户昵称

@@ -1,6 +1,8 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="empty-area"></view>
+ <view class="empty-area"></view>
+  <image style="width: 350px; height: 100px; margin:10px;" mode="scaleToFill" src="{{imageSrc}}"></image>
+<view class="empty-area"></view>
   <view class="input-area">
     <view class="label">账号</view>
     <input class="input" bindinput="bindChangeUsername"></input>
