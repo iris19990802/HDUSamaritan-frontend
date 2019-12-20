@@ -42,7 +42,9 @@
             <view class="student_item">{{item.username}}</view>
             <view class="student_item">{{item.nickname}}</view>
             <!-- <view class="student_item">{{dirc[item.abcense]}}</view> -->
-            <checkbox value="{{index}}" disabled="{{ans[index]===1}}"id="{{item.username}}" checked="{{item.abcense}}" ></checkbox>
+            <!-- <view class="student_item"><checkbox value="{{index}}" disabled="{{ans[index]===1}}"id="{{item.username}}" checked="{{item.abcense}}" ></checkbox></view> -->
+             <view class="student_item"><checkbox value="{{index}}" id="{{item.username}}" checked="{{item.abcense}}" ></checkbox></view>
+            
           </view>
           <!-- <label>
             <checkbox value="{{index}}" id="{{item.username}}" checked="{{item.abcense}}"></checkbox>
